@@ -1,0 +1,56 @@
+Select (SELECT
+  (
+    SELECT
+      sum(value / 1e18)
+    FROM
+      erc20_ethereum.evt_Transfer
+    WHERE
+      to = 0x93c4b944D05dfe6df7645A86cd2206016c51564D
+      AND contract_address = 0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84
+  ) - (
+    SELECT
+      sum(value / 1e18)
+    FROM
+      erc20_ethereum.evt_Transfer
+    WHERE
+      "from" = 0x93c4b944D05dfe6df7645A86cd2206016c51564D
+      AND contract_address = 0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84
+  ) ) +(SELECT
+  (
+    SELECT
+      sum(value / 1e18)
+    FROM
+      erc20_ethereum.evt_Transfer
+    WHERE
+      to = 0x54945180dB7943c0ed0FEE7EdaB2Bd24620256bc
+      AND contract_address = 0xBe9895146f7AF43049ca1c1AE358B0541Ea49704
+  ) - (
+    SELECT
+      sum(value / 1e18)
+    FROM
+      erc20_ethereum.evt_Transfer
+    WHERE
+      "from" = 0x54945180dB7943c0ed0FEE7EdaB2Bd24620256bc
+      AND contract_address = 0xBe9895146f7AF43049ca1c1AE358B0541Ea49704
+  ))
+  
+  +
+  (SELECT
+  (
+    SELECT
+      sum(value / 1e18)
+    FROM
+      erc20_ethereum.evt_Transfer
+    WHERE
+      to = 0x1BeE69b7dFFfA4E2d53C2a2Df135C388AD25dCD2
+      AND contract_address = 0xae78736Cd615f374D3085123A210448E74Fc6393
+  ) - (
+    SELECT
+      sum(value / 1e18)
+    FROM
+      erc20_ethereum.evt_Transfer
+    WHERE
+      "from" = 0x1BeE69b7dFFfA4E2d53C2a2Df135C388AD25dCD2
+      AND contract_address = 0xae78736Cd615f374D3085123A210448E74Fc6393
+  ))
+    
